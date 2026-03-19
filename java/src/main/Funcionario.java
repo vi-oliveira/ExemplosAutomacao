@@ -74,11 +74,11 @@ public class Funcionario {
 			break;
 			
 		case Funcionario.DBA:
-			
 			if(salarioBase >= 2000) 
 				salario = salarioBase - (salarioBase * 0.25f);
 			else
 				salario = salarioBase - (salarioBase * 0.15f);
+			break;
 
 		case Funcionario.GERENTE:
 			
@@ -102,6 +102,20 @@ public class Funcionario {
 		}
 		
 		return salario;
+	}
+
+	public boolean emailValido() {
+		String email = this.email;
+		int quantidade = 0;
+		for (int i = 0; i < email.length(); i++) {
+            if (email.charAt(i) == '@') {
+                quantidade++;
+            }
+        }
+		if (quantidade > 1 || quantidade == 0) return false;
+		int posicao = email.indexOf("@");
+		if (posicao != 0 && posicao < email.length() - 1) return true;
+		return false;
 	}
 
 }
